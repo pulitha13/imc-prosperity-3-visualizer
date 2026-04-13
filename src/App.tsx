@@ -4,7 +4,7 @@ import '@mantine/code-highlight/styles.css';
 
 import { createTheme, MantineProvider } from '@mantine/core';
 import { ReactNode } from 'react';
-import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
 import { BasePage } from './pages/base/BasePage.tsx';
 import { HomePage } from './pages/home/HomePage.tsx';
 import { VisualizerPage } from './pages/visualizer/VisualizerPage.tsx';
@@ -30,7 +30,7 @@ const theme = createTheme({
   },
 });
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<BasePage />}>
       <Route path="/" element={<HomePage />} />
@@ -38,9 +38,6 @@ const router = createBrowserRouter(
       <Route path="*" element={<Navigate to="/" />} />
     </Route>,
   ),
-  {
-    basename: '/imc-prosperity-3-visualizer/',
-  },
 );
 
 export function App(): ReactNode {
